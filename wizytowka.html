@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patryk Szarkowicz — Integration Systems Engineer</title>
+  <meta name="description" content="Wizytówka internetowa — Patryk Szarkowicz, Integration Systems Engineer / DevOps. Kubernetes, Ansible, Linux, Azure, Terraform, Kafka." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0c10; /* near-black */
+      --fg: #0c1116; /* deep slate for sections */
+      --card: #ffffff; /* white cards */
+      --text: #0f172a; /* dark text on white */
+      --muted: #475569; /* slate */
+      --ring: #1d4ed8; /* blue */
+      --gradient-start: #1e3a8a; /* indigo-800 */
+      --gradient-mid: #1d4ed8;  /* blue-700 */
+      --gradient-end: #60a5fa;  /* blue-400 */
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md: 0 6px 20px rgba(2, 6, 23, .12);
+      --radius: 14px;
+      --space: clamp(16px, 2.2vw, 28px);
+      --maxw: 1080px;
+    }
+
+    /* Reset & base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      line-height: 1.6;
+      color: #ffffff;
+      background: radial-gradient(1200px 800px at 100% -10%, rgba(59,130,246,.25), transparent 60%),
+                  radial-gradient(900px 600px at -10% 20%, rgba(99,102,241,.20), transparent 60%),
+                  linear-gradient(180deg, #0a0c10 0%, #0b1020 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(100% - 2*var(--space), var(--maxw)); margin-inline: auto; }
+
+    /* Header */
+    header.hero {
+      position: relative;
+      padding: clamp(32px, 6vw, 80px) 0;
+      background: linear-gradient(160deg, var(--gradient-start), var(--gradient-mid) 50%, var(--gradient-end));
+      color: #f8fafc;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px 220px at 30% -10%, rgba(255,255,255,.18), transparent 60%),
+                  radial-gradient(480px 200px at 90% 10%, rgba(255,255,255,.12), transparent 60%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .hero-content { display: grid; gap: 18px; align-items: center; }
+    .title {
+      font-size: clamp(28px, 5.2vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: clamp(16px, 2.4vw, 22px);
+      font-weight: 500;
+      opacity: .95;
+      margin: 0;
+    }
+
+    /* Main sections */
+    main { display: grid; gap: calc(var(--space) * 1.25); padding-block: calc(var(--space) * 1.2) calc(var(--space) * 1.8); }
+    section { outline: none; }
+    .section-title {
+      color: #e5e7eb;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin: 0 0 12px;
+      opacity: .85;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      color: var(--text);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: clamp(16px, 2.2vw, 28px);
+      transition: transform .25s ease, box-shadow .25s ease;
+      will-change: transform;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    /* About */
+    .about p { margin: 0; font-size: clamp(16px, 1.9vw, 18px); color: #0f172a; }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (min-width: 560px) { .skills-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 880px) { .skills-grid { grid-template-columns: repeat(6, 1fr); } }
+    .skill {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600;
+      border: 1px solid rgba(2,6,23,.05);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .skill:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(29,78,216,.35); }
+
+    /* Contact form */
+    .form { display: grid; gap: 14px; }
+    .field { display: grid; gap: 8px; }
+    label { font-weight: 600; font-size: 14px; color: #0f172a; }
+    .input, .textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(2,6,23,.1);
+      padding: 12px 14px;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease;
+    }
+    .input:focus, .textarea:focus {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 4px rgba(29,78,216,.15);
+    }
+    .textarea { min-height: 140px; resize: vertical; }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+      background: linear-gradient(135deg, var(--gradient-mid), var(--gradient-end));
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, .35);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37, 99, 235, .5); }
+    .btn:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(37, 99, 235, .35); }
+
+    /* Layout helpers */
+    .stack { display: grid; gap: var(--space); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+      padding: 22px 0 40px;
+      color: #cbd5e1;
+    }
+    .socials { display: flex; gap: 14px; flex-wrap: wrap; }
+    .social-link {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease, border-color .2s ease;
+    }
+    .social-link:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.24); transform: translateY(-2px); }
+
+    /* Accessible skip link */
+    .skip-link {
+      position: absolute; left: 50%; transform: translate(-50%, -200%);
+      background: #fff; color: var(--text);
+      padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow-md);
+      transition: transform .2s ease;
+      z-index: 100;
+    }
+    .skip-link:focus { transform: translate(-50%, 10px); }
+
+    /* Sections layout using grid for cards */
+    .grid-sections { display: grid; gap: var(--space); }
+    @media (min-width: 880px) {
+      .grid-sections { grid-template-columns: 1.2fr .8fr; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+
+  <!-- HEADER -->
+  <header class="hero" role="banner" aria-label="Nagłówek">
+    <div class="container hero-content">
+      <h1 class="title" aria-label="Patryk Szarkowicz">Patryk Szarkowicz</h1>
+      <p class="subtitle">Integration Systems Engineer</p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main" class="container">
+    <div class="grid-sections">
+      <!-- Left column: About & Skills -->
+      <div class="stack">
+        <!-- About section -->
+        <section class="card about" aria-labelledby="about-title">
+          <h2 id="about-title" class="section-title">O mnie</h2>
+          <p>Nazywam się Patryk Szarkowicz, od ponad 3 lat pracuję jako DevOps. Interesuję się rozwiązaniami chmurowymi.</p>
+        </section>
+
+        <!-- Skills section -->
+        <section class="card" aria-labelledby="skills-title">
+          <h2 id="skills-title" class="section-title">Umiejętności</h2>
+          <div class="skills-grid" role="list" aria-label="Lista umiejętności">
+            <div class="skill" role="listitem" aria-label="Kubernetes">Kubernetes</div>
+            <div class="skill" role="listitem" aria-label="Ansible">Ansible</div>
+            <div class="skill" role="listitem" aria-label="Linux">Linux</div>
+            <div class="skill" role="listitem" aria-label="Microsoft Azure">Azure</div>
+            <div class="skill" role="listitem" aria-label="Terraform">Terraform</div>
+            <div class="skill" role="listitem" aria-label="Apache Kafka">Kafka</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: Contact form -->
+      <section class="card" aria-labelledby="contact-title">
+        <h2 id="contact-title" class="section-title">Kontakt</h2>
+        <form class="form" action="#" method="POST" novalidate="false" aria-describedby="form-desc">
+          <p id="form-desc" style="margin:0;color:#334155;font-size:14px">Wypełnij formularz — wszystkie pola są wymagane.</p>
+
+          <div class="field">
+            <label for="name">Imię</label>
+            <input class="input" id="name" name="name" type="text" inputmode="text" autocomplete="name" placeholder="Twoje imię" required minlength="2" maxlength="80" aria-required="true" />
+          </div>
+
+          <div class="field">
+            <label for="email">E‑mail</label>
+            <input class="input" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="twoj@email.com" required aria-required="true" />
+          </div>
+
+          <div class="field">
+            <label for="message">Wiadomość</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Napisz w czym mogę pomóc…" required minlength="10" maxlength="2000" aria-required="true"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit" aria-label="Wyślij wiadomość">Wyślij</button>
+            <a class="btn" href="mailto:hello@example.com" role="button" aria-label="Wyślij e-mail">Napisz e‑mail</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container" style="display:grid; gap:12px;">
+      <div class="socials" aria-label="Linki społecznościowe">
+        <a class="social-link" href="#" aria-label="LinkedIn" title="LinkedIn">LinkedIn</a>
+        <a class="social-link" href="#" aria-label="GitHub" title="GitHub">GitHub</a>
+        <a class="social-link" href="#" aria-label="X (Twitter)" title="X (Twitter)">X</a>
+        <a class="social-link" href="#" aria-label="Email" title="Email">Email</a>
+      </div>
+      <small aria-label="Prawa autorskie" style="opacity:.8">© <span id="year"></span> Patryk Szarkowicz. Wszelkie prawa zastrzeżone.</small>
+    </div>
+  </footer>
+
+  <!-- Tiny inline script solely to set current year, optional & accessible-safe -->
+  <script>
+    (function(){
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if (el) el.textContent = y;
+    })();
+  </script>
+</body>
+</html>
